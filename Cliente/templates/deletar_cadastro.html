@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <title>Deletar Cadastro</title>
+    <body style="background-color: black">
+    <h1 style="color: aliceblue">Deletar Cadastro</h1>
+    <p style="color: red; font-size: 20px">Tem certeza de que deseja deletar o cadastro de {{ cadastro.nome }} {{ cadastro.sobrenome }}?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">SIM</button>
+        <a href={% url 'listar_cadastros' %} class="btn btn-primary">NÃO</a>
+    </form>
+{% endblock %}

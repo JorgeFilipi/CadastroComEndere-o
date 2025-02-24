@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <title>Detalhes do Cadastro</title>
+
+    <body>
+    <h1>{{ cadastro.nome }} {{ cadastro.sobrenome }}</h1>
+    <form>
+
+        <p>CPF: {{ cadastro.cpf }}</p>
+        <p>Email: {{ cadastro.email }}</p>
+        <p>Telefone: {{ cadastro.telefone }}</p>
+        <h2>Endereços</h2>
+    </form>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Rua</th>
+            <th scope="col">Número</th>
+            <th scope="col">Bairro</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Estado</th>
+            <th scope="col">CEP</th>
+            <th scope="col">Complemento</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for endereco in endereco_cliente %}
+            <tr>
+                <td>{{ endereco.rua }}</td>
+                <td>{{ endereco.numero }}</td>
+                <td>{{ endereco.bairro }}</td>
+                <td>{{ endereco.cidade }}</td>
+                <td>{{ endereco.estado }}</td>
+                <td>{{ endereco.cep }}</td>
+                <td>{{ endereco.complemento }}</td>
+                <td>
+                    <a class="btn btn-danger" href="{% url 'deletar_endereco' endereco.id %}">Deletar</a>
+                    {% if error_message %}
+                        <p class="error">{{ error_message }}</p>
+                    {% endif %}
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-success" href="{% url 'criar_endereco' cadastro.id %}">Adicionar Endereço</a>
+    <a class="btn btn-primary" href="{% url 'editar_cadastro' cadastro.pk %}">Editar</a>
+    <a class="btn btn-warning" href="{% url 'listar_cadastros' %}">Voltar</a>
+    </body>
+
+{% endblock %}

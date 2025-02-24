@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <title>Editar Cadastro</title>
+
+    <body>
+    <h1>Editar Cadastro</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success" type="submit">Salvar</button>
+        <a class="btn btn-danger" href="{% url 'listar_cadastros' %}">Cancelar</a>
+    </form>
+    </body>
+{% endblock %}

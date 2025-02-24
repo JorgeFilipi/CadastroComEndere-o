@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Detalhar</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Deletar</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cadastro in cadastros %}
+            <tr>
+                <td>{{ cadastro.nome }} {{ cadastro.sobrenome }}</td>
+                <td><a class="btn btn-success" href="{% url 'detalhar_cadastro' cadastro.pk %}">Detalhar</a></td>
+                <td><a class="btn btn-warning" href="{% url 'editar_cadastro' cadastro.pk %}">Editar</a></td>
+                <td><a class="btn btn-danger" href="{% url 'deletar_cadastro' cadastro.pk %}">Deletar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{% url 'criar_cadastro' %}">Novo Cadastro</a>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <title>Novo Endereço</title>
+    <body>
+    <h1 class="mb-4">Novo Endereço</h1>
+    <form method="post" class="row g-3">
+        {% csrf_token %}
+        {{ form.nome }}
+        <div class="col-md-6" style="padding: 5px">
+            <label for="id_rua">Rua</label>
+            {{ form.rua }}
+        </div>
+        <div class="col-md-6" style="padding: 5px">
+            <label for="id_numero">Número</label>
+            {{ form.numero }}
+        </div>
+        <div class="col-md-6" style="padding: 5px">
+            <label for="id_bairro">Bairro</label>
+            {{ form.bairro }}
+        </div>
+        <div class="col-md-6" style="padding: 5px">
+            <label for="id_cidade">Cidade</label>
+            {{ form.cidade }}
+        </div>
+        <div class="col-md-6">
+            <label for="id_estado">Estado</label>
+            {{ form.estado }}
+        </div>
+        <div class="col-md-6">
+            <label for="id_cep">CEP</label>
+            {{ form.cep }}
+        </div>
+        <div class="col-md-6">
+            <label for="id_complemento">Complemento</label>
+            {{ form.complemento }}
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a class="btn btn-danger" href="{% url 'listar_cadastros' %}">Cancelar</a>
+        </div>
+    </form>
+    </body>
+{% endblock %}
